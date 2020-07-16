@@ -2,12 +2,10 @@ name: POI-CI
 
 on:
   push:
-    branches: 
-    - OHT2.POI
+    branches: [ OHT2.POI ]
     paths: apis/poi/**
   pull_request:
-    branches: 
-    - OHT2.POI
+    branches: [ OHT2.POI ]
     paths: apis/poi/**
 
 jobs:
@@ -25,6 +23,4 @@ jobs:
       run: dotnet build apis/poi/poi.sln
     - name: dotnet Unit Test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
-      env:
-        CI: True 
   #   - name: packaging
