@@ -23,6 +23,6 @@ jobs:
         dotnet-version: 3.1.101
     - name: build
       run: dotnet build apis/poi/poi.sln
-  #  - name: Unit Test
-  #    run: dotnet test --no-restore --verbosity normal
+    - name: dotnet Unit Test
+      run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
   #   - name: packaging
