@@ -1,0 +1,28 @@
+name: POI-CI
+
+on:
+  push:
+    branches: 
+    - OHT2.POI
+    paths: apis/poi/**
+  pull_request:
+    branches: 
+    - OHT2.POI
+    paths: apis/poi/**
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: build
+      run: dotnet build apis/poi/poi.sln
+  #  - name: Unit Test
+  #    run: dotnet test --no-restore --verbosity normal
+  #   - name: packaging
