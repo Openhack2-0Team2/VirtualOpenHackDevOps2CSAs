@@ -25,4 +25,6 @@ jobs:
       run: dotnet build apis/poi/poi.sln
     - name: dotnet Unit Test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
+      env:
+        CI: True 
   #   - name: packaging
