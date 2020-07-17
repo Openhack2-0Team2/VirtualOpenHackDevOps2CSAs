@@ -1,0 +1,24 @@
+on:
+  push:
+    branches: [ OHT2.POI ]
+    paths: 'apis/poi/**'
+  pull_request:
+    branches: [ master ]
+    paths: 'apis/poi/**'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-and-deploy:
+    # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+  
+      steps:
+        - name: 'Build and push image'
+          uses: azure/docker-login@v1
+          with:
+            login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+            username: ${{ secrets.REGISTRY_USERNAME }}
+            password: ${{ secrets.REGISTRY_PASSWORD }}
+        - run: |
+            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
