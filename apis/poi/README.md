@@ -1,7 +1,7 @@
 
 # POI Service
 
-## Prueba 010 CD
+## Prueba 10 CD
 
 ## Overview
 
