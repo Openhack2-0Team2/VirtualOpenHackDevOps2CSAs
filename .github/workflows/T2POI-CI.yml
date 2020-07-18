@@ -15,12 +15,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.5.0
       with:
-        dotnet-version: 3.1.302
+        dotnet-version: 3.1
+      
     - name: build
       run: dotnet build apis/poi/poi.sln
+      
     - name: dotnet Unit Test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
+      
   #   - name: packaging
