@@ -9,7 +9,7 @@ on:
     paths: 'apis/poi/**' 
       
 jobs:
- build and test:
+ build:
   runs-on: ubuntu-latest
   steps:
   - uses: actions/checkout@v2
