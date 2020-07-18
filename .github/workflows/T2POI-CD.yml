@@ -20,10 +20,11 @@ on:
     branches: [ master ]
     paths: 'apis/poi/**'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+name: Build and Push to ACR
 jobs:
   build-and-deploy:
-    # The type of runner that the job will run on
+    # Starts jobs and sets the type of runner (ubuntu-latest) they will run on
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
@@ -34,5 +35,5 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build . -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}api-poi:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}api-poi:${{ github.sha }}
+            docker build . -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
