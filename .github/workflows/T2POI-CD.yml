@@ -26,8 +26,6 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
    # Use docker login
-        - name: ACR Login
-          run: docker login $registry -u ${{ secrets.REGISTRY_USERNAME }} -p {{ secrets.REGISTRY_PASSWORD }}
         - name: 'Docker Login'
           run: docker login $registry -u ${{ secrets.DOCKER_USERNAME }} -p {{ secrets.GITHUB_TOKEN }}
      #     uses: azure/docker-login@v1
