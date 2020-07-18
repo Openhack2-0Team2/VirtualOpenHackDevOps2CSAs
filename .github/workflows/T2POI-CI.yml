@@ -4,13 +4,13 @@ on:
   push:
     branches: [ OHT2.POI ]
     paths: 
-     -apis/poi/** 
-     - .github/workflows/T2POI-CI.yml
+      -apis/poi/** 
+      - .github/workflows/T2POI-CI.yml
   pull_request:
     branches: [ master ]
     paths: 
-     -apis/poi/** 
-     - .github/workflows/T2POI-CI.yml
+      -apis/poi/** 
+      - .github/workflows/T2POI-CI.yml
 
 jobs:
  build:
