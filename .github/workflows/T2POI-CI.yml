@@ -3,27 +3,43 @@ name: POI-CI
 on:
   push:
     branches: [ OHT2.POI ]
-    paths: 'apis/poi/**'
+    paths: 
+     -apis/poi/** 
+     - .github/workflows/T2POI-CI.yml
   pull_request:
     branches: [ master ]
-    paths: 'apis/poi/**'
+    paths: 
+     -apis/poi/** 
+     - .github/workflows/T2POI-CI.yml
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1.5.0
-      with:
-        dotnet-version: 3.1
+build and test:
+  runs-on: ubuntu-latest
+  steps:
+  - uses: actions/checkout@v2
       
-    - name: build
-      run: dotnet build apis/poi/poi.sln
-      
-    - name: dotnet Unit Test
-      run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
+  - name: Setup .NET Core SDK
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: '3.1.202'
+  - name: Add code Coverage Tools
+    working-directory: apis/poi/tests/UnitTests 
+    run: dotnet add add package coverlet.msbuild   
+     
+  - name: Install dependencies
+    run: dotnet restore apis/poi/web/*.csproj
+    
+  - name: .NET Build Web 
+    run: dotnet build --configuration Release --no-restore apis/poi/web/*.csproj
+    
+	- name: dotnet build Unit Tests
+    run: dotnet build --configuration Release apis/poi/tests/UnitTests/UnitTests.csproj
+    
+  - name: dotnet Unit Test
+    run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
       
   #   - name: packaging
+
+
+
+
