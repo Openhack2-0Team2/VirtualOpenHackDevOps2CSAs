@@ -10,10 +10,10 @@
 on:
   push:
     branches: [ OHT2.POI ]
-    paths: 'apis/poi/**''.github/workflows/T2POI-CD.yml'
+    paths: 'apis/poi/**'
   pull_request:
     branches: [ master ]
-    paths: 'apis/poi/**''.github/workflows/T2POI-CD.yml'
+    paths: 'apis/poi/**'
   
       
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel.
