@@ -19,8 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.302
-    - name: Install dependencies
-      run: dotnet restore
     - name: build
       run: dotnet build apis/poi/poi.sln
     - name: dotnet Unit Test
