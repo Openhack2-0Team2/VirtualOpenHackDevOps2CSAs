@@ -10,10 +10,10 @@
 on:
   push:
     branches: [ OHT2.POI ]
-    paths: 'apis/poi/**'
+    paths: 'apis/poi/**''.github/workflows/T2POI-CD.yml'
   pull_request:
     branches: [ master ]
-    paths: 'apis/poi/**'
+    paths: 'apis/poi/**''.github/workflows/T2POI-CD.yml'
   
       
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel.
@@ -33,5 +33,5 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }} .
+            docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }} .
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
