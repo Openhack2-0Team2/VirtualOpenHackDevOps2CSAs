@@ -6,7 +6,7 @@ COPY *.csproj ./
 RUN dotnet restore
 
 # copy everything else and build
-COPY . ./
+COPY . .
 RUN dotnet publish -c Release -o out
 COPY ./appsettings.*.json /app/out/
 COPY ./appsettings.json /app/out/
