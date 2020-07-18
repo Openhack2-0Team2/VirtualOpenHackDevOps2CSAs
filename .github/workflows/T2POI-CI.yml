@@ -1,4 +1,4 @@
-name: POI-CI
+name: T2POI-CI
 
 on:
   push:
