@@ -22,16 +22,14 @@ jobs:
   build-and-deploy:
     # Starts jobs and sets the type of runner (ubuntu-latest) they will run on
       runs-on: ubuntu-latest
+         
+      
       steps:
         - name: Checkout repository
           uses: actions/checkout@v2
    # Use docker login
         - name: 'Docker Login'
-          uses: azure/docker-login@v1
-          with:
-           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-           username: ${{ secrets.REGISTRY_USERNAME }}
-           password: ${{ secrets.REGISTRY_PASSWORD }}
+          run: docker login $registry -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.GITHUB_TOKEN }}    
            
         - run: | 
             docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}api-poi:${{ github.sha }} .
