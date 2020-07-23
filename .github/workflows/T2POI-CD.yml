@@ -30,7 +30,7 @@ jobs:
       
       steps:
         - name: Checkout repository
-          uses: actions/checkout@v1
+          uses: actions/checkout@v2
    # Use docker login
         - name: 'Docker Login'
           uses: azure/docker-login@v1
@@ -40,5 +40,5 @@ jobs:
            password: ${{ secrets.REGISTRY_PASSWORD }}   
            
         - run: | 
-            docker build -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }} ./
+            docker build -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }} .
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}devopsoh/api-poi:${{ github.sha }}
