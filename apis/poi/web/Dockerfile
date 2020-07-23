@@ -10,9 +10,6 @@ COPY . .
 RUN dotnet publish -c Release -o out
 COPY ./appsettings.*.json /app/out/
 
-# adding space between copy commands
-
-COPY ./appsettings.json /app/out/
 
 # build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
