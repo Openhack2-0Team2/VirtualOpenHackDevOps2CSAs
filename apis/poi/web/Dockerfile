@@ -9,6 +9,9 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o out
 COPY ./appsettings.*.json /app/out/
+
+# adding space between copy commands
+
 COPY ./appsettings.json /app/out/
 
 # build runtime image
