@@ -1,5 +1,8 @@
 name: T2POI-CI
 
+env: 
+  poi_path: apis/poi/** 
+
 on:
   push:
     branches: [ OHT2.POI ]
@@ -35,7 +38,7 @@ jobs:
     run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj
     
   - name: .NET Test 
-    run: dotnet test --no-restore --verbosity normal apis/poi/tests/UnitTests /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
+    run: dotnet test --no-restore --verbosity normal apis/poi/tests/UnitTests  /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
         
   - name: Coveralls
     uses: coverallsapp/github-action@master
