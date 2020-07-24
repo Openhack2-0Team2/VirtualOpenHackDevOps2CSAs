@@ -3,7 +3,7 @@ name: T2POI-CI
 on:
   push:
     branches: [ OHT2.POI ]
-    paths: 'apis/poi/**'
+    paths: [ 'apis/poi/**', '.github/workflows/T2POI-CI.yml' ]
   pull_request:
     branches: [ master ]
     paths: 'apis/poi/**' 
@@ -14,10 +14,10 @@ jobs:
   steps:
   - uses: actions/checkout@v2
       
-  #- name: Setup .NET Core SDK
-  #  uses: actions/setup-dotnet@v1
-  #  with:
-  #   dotnet-version: '3.1'
+  - name: Setup .NET Core SDK
+    uses: actions/setup-dotnet@v1
+    with:
+     dotnet-version: '3.1.3'
   - name: Add Code Coverage Tools
     working-directory: apis/poi/tests/UnitTests 
     run: dotnet add package coverlet.msbuild   
