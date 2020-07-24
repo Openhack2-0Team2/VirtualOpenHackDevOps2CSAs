@@ -26,6 +26,7 @@ name: Build and Push to ACR
 jobs:
   build-and-deploy:
     # Starts jobs and sets the type of runner (ubuntu-latest) they will run on
+      
       runs-on: ubuntu-latest
          
       
