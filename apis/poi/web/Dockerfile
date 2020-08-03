@@ -1,25 +1,32 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1.202 AS build-env
+#DockerFile
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.csproj ./
+
 RUN dotnet restore
 
 # copy everything else and build
-COPY . .
+COPY . ./
+
 RUN dotnet publish -c Release -o out
+
 COPY ./appsettings.*.json /app/out/
 COPY ./appsettings.json /app/out/
 
 
 # build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.202
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+
 WORKDIR /app
 
 # docker build argument
 #    This can be specified during the docker build step by adding " --build-arg build_version=<value>"
 #    App version can be accessed via the uri path /api/version/poi
 #    https://vsupalov.com/docker-build-pass-environment-variables/
+
 ARG build_version="poi default"
 
 ENV SQL_USER="YourUserName" \
