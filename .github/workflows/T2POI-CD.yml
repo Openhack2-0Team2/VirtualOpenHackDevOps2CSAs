@@ -44,5 +44,5 @@ jobs:
            password: ${{ secrets.REGISTRY_PASSWORD }}   
            
         - run: | 
-            docker build . -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/api-poi:${{ github.sha }}
+            docker build -f apis/poi/web/Dockerfile -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/api-poi:${{ github.sha }} .
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/api-poi:${{ github.sha }}
